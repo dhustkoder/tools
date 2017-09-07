@@ -23,8 +23,10 @@ int main(int argc, char** argv)
 
 	printf("static const uint8_t binary[] = {\n\t");
 
+	const long linelim = argc >= 3 ? strtoll(argv[2], NULL, 0) : 32;
+
 	for (long i = 0, brk = 0; i < size; ++i, ++brk) {
-		if (brk == 32) {
+		if (brk == linelim) {
 			printf("\n\t");
 			brk = 0;
 		}
